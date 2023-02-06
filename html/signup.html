@@ -1,22 +1,44 @@
 <head>
-    <link rel="stylesheet" href="../css/signup.css">
+    <link rel="stylesheet" href="../css/signupLogin.css">
+    <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+    
 </head>
 <body>
     <div class="wrapper">
         <div class="container">
             <div class="container-head">
-                Welcome
+                Hello!
             </div>
             <div class="signup-login">  
-                <textarea id="username-input" class="data-input" placeholder="Username"></textarea>
-                <textarea id="password-input" class='data-input' placeholder="Password"></textarea>
+                <textarea id="username-input" placeholder="Username"></textarea>
+                <textarea id="password-input" placeholder="Password"></textarea>
                 <div id="signup-button">
-                    Signup
+                    Enter
                 </div>
             </div>
         </div>
     </div>
 </body>
-<script>
+<script type="module">
 
+    const firebaseConfig = {
+        apiKey: "AIzaSyCa2CBiVrTvIIAghBkFtSCE7qQ_xZaFHFs",
+        authDomain: "chat-app-eb721.firebaseapp.com",
+        projectId: "chat-app-eb721",
+        storageBucket: "chat-app-eb721.appspot.com",
+        messagingSenderId: "283100449591",
+        appId: "1:283100449591:web:778ecd4cb6c17d087768b2",
+        measurementId: "G-MQX1ZZWTMF"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    // FIX: const db = firebase.firestore();
+
+    const signupButton = document.getElementById('signup-button')
+    const usernameInput = document.getElementById('username-input')
+    const passwordInput = document.getElementById('password-input')
+
+    console.log(db)
+
+       
 </script>
