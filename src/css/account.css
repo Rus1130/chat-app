@@ -43,7 +43,7 @@ textarea:focus {
     font-size: 50px;
 }
 
-.signup-login {
+.account-data-input {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 50px 50px 50px;

@@ -1,0 +1,54 @@
+<head>
+    <link rel="stylesheet" href="../src/css/account.css">
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script defer src="../src/js/init-firebase.js"></script>
+    <script defer src="../src/js/main.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="container-head">
+                Hello!
+            </div>
+            <div class="account-data-input">  
+                <textarea id="username-input" placeholder="Username"></textarea>
+                <textarea id="password-input" placeholder="Password"></textarea>
+                <div id="button">
+                    Continue
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const button = document.getElementById('button')
+    const usernameInput = document.getElementById('username-input')
+    const passwordInput = document.getElementById('password-input')
+
+    button.onclick = e => {
+        usernameInput.value = String(usernameInput.value)
+        passwordInput.value = String(passwordInput.value)
+
+        usernameInput.value = usernameInput.value.trim()
+        passwordInput.value = passwordInput.value.trim()
+        
+        if(usernameInput.value == "" || passwordInput.value == "") return alert("Please fill in all fields.")
+
+        let userData = db.collection('users').doc(`/${usernameInput.value}`);
+        userData.get().then(doc => {
+            let data = doc.data()
+            if(data == undefined){
+                userData.set({
+                    password: passwordInput.value,
+                    admin: false,
+                })
+            }
+        })
+    }
+
+
+
+       
+</script>
