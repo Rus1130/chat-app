@@ -1,3 +1,6 @@
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js'
+import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js'
+
 const firebaseConfig = {
     apiKey: "AIzaSyCa2CBiVrTvIIAghBkFtSCE7qQ_xZaFHFs",
     authDomain: "chat-app-eb721.firebaseapp.com",
@@ -7,3 +10,8 @@ const firebaseConfig = {
     appId: "1:283100449591:web:778ecd4cb6c17d087768b2",
     measurementId: "G-MQX1ZZWTMF"
 };
+
+const app = initializeApp(firebaseConfig)
+const db = getFirestore(app)
+
+export { db }

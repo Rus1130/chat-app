@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Lato, sans-serif;
+}
+
+.wrapper {
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 500px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 4fr;
+}
+
+.container-head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+}

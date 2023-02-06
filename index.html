@@ -1,17 +1,21 @@
 <style>
 </style>
 <head>
-    <script src="config.js"></script>
+
 </head>
 <body>
 
 </body>
 <script type="module">
-    import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js'
-    import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js'
+    import { db } from './js/config.mjs'
+    // get local storage
+    const chatAppLogin = localStorage.getItem('chat-app-login')
+    if(chatAppLogin === null) {
+        window.location.href = './html/signup'
+    } else {
+        window.location.href = './html/chat'
+    }
 
-    const app = initializeApp(firebaseConfig)
-    const db = getFirestore(app)
 
     // https://firebase.google.com/docs/firestore/manage-data/add-data#web-version-8
 
