@@ -1,15 +1,18 @@
 <style>
 </style>
 <head>
-
+    <script src="config.js"></script>
 </head>
 <body>
 
 </body>
 <script type="module">
     import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js'
-    import { firebaseConfig } from './config.mjs'
-    console.log(firebaseConfig)
-    //const app = initalizeApp(firebaseConfig)
+    import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js'
+
+    const app = initializeApp(firebaseConfig)
+    const db = getFirestore(app)
+
+    // https://firebase.google.com/docs/firestore/manage-data/add-data#web-version-8
 
 </script>
