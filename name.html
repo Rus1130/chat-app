@@ -33,10 +33,12 @@
 
 
         usernameInput.value = String(usernameInput.value)
-        usernameInput.value = usernameInput.value.trim()
 
         if(usernameInput.value == "") return alert("Please fill in all fields.")
-        if(usernameInput.value.split("").includes(" ")) return alert("Username cannot contain spaces.")
+
+        let usernameSplit = usernameInput.value.split("").map(char => char.charCodeAt(0))
+
+        if(usernameSplit.some(char => (char >= 0 && char <= 32) || (char >= 127 && char <= 160))) return alert("Username contains illegal characters.")
 
         if(usernameInput.value == 'DUMMY') return alert("No.")
 
@@ -50,7 +52,7 @@
                     username: usernameInput.value,
                     admin: false,
                     currentRoom: "Global",
-                    time: Date.now()
+                    timeMS: Date.now(),
                 })
                 localStorage.setItem('chat-app-user-token', loginToken)
             } else {
@@ -58,7 +60,7 @@
                     username: usernameInput.value,
                     admin: false,
                     currentRoom: "Global",
-                    time: Date.now()
+                    timeMS: Date.now()
                 }, {merge: true})
             }
         })
