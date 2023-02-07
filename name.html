@@ -21,15 +21,16 @@
 </body>
 <script>
     const button = document.getElementById('button')
+    const usernameInput = document.getElementById('username-input')
+    
+    usernameInput.onkeydown = e => {
+        if(e.key == "Enter"){
+            e.preventDefault()
+        }
+    }
 
     button.onclick = e => {
-        const usernameInput = document.getElementById('username-input')
 
-        usernameInput.onkeydown = e => {
-            if(e.key == "Enter"){
-                e.preventDefault()
-            }
-        }
 
         usernameInput.value = String(usernameInput.value)
         usernameInput.value = usernameInput.value.trim()
@@ -46,20 +47,18 @@
             let data = doc.data()
             if(data == undefined){
                 userData.set({
-                    [Date.now()]: {
-                        username: usernameInput.value,
-                        admin: false,
-                        currentRoom: "Global"
-                    }
+                    username: usernameInput.value,
+                    admin: false,
+                    currentRoom: "Global",
+                    time: Date.now()
                 })
                 localStorage.setItem('chat-app-user-token', loginToken)
             } else {
                 userData.set({
-                    [Date.now()]: {
-                        username: usernameInput.value,
-                        admin: false,
-                        currentRoom: "Global"
-                    }
+                    username: usernameInput.value,
+                    admin: false,
+                    currentRoom: "Global",
+                    time: Date.now()
                 }, {merge: true})
             }
         })
