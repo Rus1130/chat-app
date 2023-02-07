@@ -27,20 +27,20 @@
 
     button.onclick = e => {
         const usernameInput = document.getElementById('username-input')
-    const passwordInput = document.getElementById('password-input')
+        const passwordInput = document.getElementById('password-input')
 
-    usernameInput.value = String(usernameInput.value)
-    passwordInput.value = String(passwordInput.value)
+        usernameInput.value = String(usernameInput.value)
+        passwordInput.value = String(passwordInput.value)
 
-    usernameInput.value = usernameInput.value.trim()
-    passwordInput.value = passwordInput.value.trim()
-        
-    if(usernameInput.value == "" || passwordInput.value == "") return alert("Please fill in all fields.")
-    if(usernameInput.value.split("").includes(" ")) return alert("Username cannot contain spaces.")
+        usernameInput.value = usernameInput.value.trim()
+        passwordInput.value = passwordInput.value.trim()
+            
+        if(usernameInput.value == "" || passwordInput.value == "") return alert("Please fill in all fields.")
+        if(usernameInput.value.split("").includes(" ")) return alert("Username cannot contain spaces.")
     
-    if(usernameInput.value == 'DUMMY') return alert("No.")
+        if(usernameInput.value == 'DUMMY') return alert("No.")
 
-    let userData = db.collection('users').doc(`/${usernameInput.value}`);
+        let userData = db.collection('users').doc(`/${usernameInput.value}`);
         userData.get().then(doc => {
             let data = doc.data()
             if(data == undefined){
