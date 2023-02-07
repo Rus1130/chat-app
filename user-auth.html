@@ -15,31 +15,32 @@
                 <textarea id="username-input" placeholder="Username"></textarea>
                 <textarea id="password-input" placeholder="Password"></textarea>
                 <div id="button">
-                    Create Account
+                    Continue
                 </div>
             </div>
         </div>
     </div>
 </body>
-<script>
-    if(localStorage.getItem('chat-app-has-account') == "true") window.location.href = "./app.html";
-    
+<script>    
     const button = document.getElementById('button')
-    const usernameInput = document.getElementById('username-input')
-    const passwordInput = document.getElementById('password-input')
+
 
     button.onclick = e => {
-        usernameInput.value = String(usernameInput.value)
-        passwordInput.value = String(passwordInput.value)
+        const usernameInput = document.getElementById('username-input')
+    const passwordInput = document.getElementById('password-input')
 
-        usernameInput.value = usernameInput.value.trim()
-        passwordInput.value = passwordInput.value.trim()
+    usernameInput.value = String(usernameInput.value)
+    passwordInput.value = String(passwordInput.value)
+
+    usernameInput.value = usernameInput.value.trim()
+    passwordInput.value = passwordInput.value.trim()
         
-        if(usernameInput.value == "" || passwordInput.value == "") return alert("Please fill in all fields.")
-        if(usernameInput.value.split("").includes(" ")) return alert("Username cannot contain spaces.")
-        if(usernameInput.value == 'DUMMY') return alert("No.")
+    if(usernameInput.value == "" || passwordInput.value == "") return alert("Please fill in all fields.")
+    if(usernameInput.value.split("").includes(" ")) return alert("Username cannot contain spaces.")
+    
+    if(usernameInput.value == 'DUMMY') return alert("No.")
 
-        let userData = db.collection('users').doc(`/${usernameInput.value}`);
+    let userData = db.collection('users').doc(`/${usernameInput.value}`);
         userData.get().then(doc => {
             let data = doc.data()
             if(data == undefined){
@@ -47,8 +48,6 @@
                     password: passwordInput.value,
                     admin: false,
                 })
-                localStorage.setItem('chat-app-has-account', true)
-                window.location.href = "./app.html";
             } else {
                 alert("Username already exists.")
             }

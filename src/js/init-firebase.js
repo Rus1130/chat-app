@@ -10,5 +10,9 @@ const firebaseConfig = {
     measurementId: "G-MQX1ZZWTMF"
 };
 
+function getLoginToken(){
+    return (Math.random().toString(36) + Math.random().toString(36)).replaceAll('0.', "")
+}
+
 const app = firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+const db = firebase.firestore(app);
