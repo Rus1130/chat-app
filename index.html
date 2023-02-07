@@ -1,5 +1,5 @@
 <body></body>
 <script>
-    // redirect to signup.html
-    window.location.href = "./src/html/account.html";
+    if(localStorage.getItem('chat-app-has-account') == "true") window.location.href = "./login.html";
+    else window.location.href = "./signup.html";
 </script>

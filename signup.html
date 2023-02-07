@@ -1,28 +1,28 @@
 <head>
-    <link rel="stylesheet" href="../src/css/account.css">
+    <link rel="stylesheet" href="/src/css/user-auth.css">
     <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-    <script defer src="../src/js/init-firebase.js"></script>
-    <script defer src="../src/js/main.js"></script>
+    <script defer src="/src/js/init-firebase.js"></script>
 </head>
 <body>
     <div class="wrapper">
         <div class="container">
             <div class="container-head">
-                Hello!
+                Welcome!
             </div>
             <div class="account-data-input">  
                 <textarea id="username-input" placeholder="Username"></textarea>
                 <textarea id="password-input" placeholder="Password"></textarea>
                 <div id="button">
-                    Continue
+                    Sign Up
                 </div>
             </div>
         </div>
     </div>
 </body>
 <script>
+    if(localStorage.getItem('chat-app-has-account') == "true") window.location.href = "./login.html";
     const button = document.getElementById('button')
     const usernameInput = document.getElementById('username-input')
     const passwordInput = document.getElementById('password-input')
@@ -44,11 +44,11 @@
                     password: passwordInput.value,
                     admin: false,
                 })
+                localStorage.setItem('chat-app-has-account', true)
+                window.location.href = "./app.html";
+            } else {
+                alert("Username already exists.")
             }
         })
-    }
-
-
-
-       
+    }  
 </script>
