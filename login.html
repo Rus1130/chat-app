@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" type=“text/css” href="./src/css/user-auth.css">
+    <link rel="stylesheet" href="./src/css/user-auth.css">
     <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
@@ -9,13 +9,13 @@
     <div class="wrapper">
         <div class="content">
             <div class="content-header">
-                Welcome!
+                Welcome Back!
             </div>
             <div class="content-data">  
                 <textarea id="username-input" placeholder="Username"></textarea>
                 <textarea id="password-input" placeholder="Password"></textarea>
                 <div id="button">
-                    Create Account
+                    Login
                 </div>
             </div>
         </div>
@@ -40,16 +40,7 @@
         let userData = db.collection('users').doc(`/${usernameInput.value}`);
         userData.get().then(doc => {
             let data = doc.data()
-            if(data == undefined){
-                userData.set({
-                    password: passwordInput.value,
-                    admin: false,
-                })
-                localStorage.setItem('chat-app-has-account', true)
-                window.location.href = "./app.html";
-            } else {
-                alert("Username already exists.")
-            }
+
         })
     }  
 </script>
