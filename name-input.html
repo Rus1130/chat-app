@@ -1,0 +1,68 @@
+<head>
+    <link rel="stylesheet" href="./src/css/user-auth.css">
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script defer src="./src/js/init-firebase.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <div class="content-header">
+                Welcome!
+            </div>
+            <div class="content-data">  
+                <textarea id="username-input" placeholder="Username"></textarea>
+                <div id="button">
+                    Continue
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const button = document.getElementById('button')
+
+    button.onclick = e => {
+        const usernameInput = document.getElementById('username-input')
+
+        usernameInput.onkeydown = e => {
+            if(e.key == "Enter"){
+                e.preventDefault()
+            }
+        }
+
+        usernameInput.value = String(usernameInput.value)
+        usernameInput.value = usernameInput.value.trim()
+
+        if(usernameInput.value == "") return alert("Please fill in all fields.")
+        if(usernameInput.value.split("").includes(" ")) return alert("Username cannot contain spaces.")
+
+        if(usernameInput.value == 'DUMMY') return alert("No.")
+
+        let loginToken = localStorage.getItem('chat-app-user-token') == null ? generateToken() : localStorage.getItem('chat-app-user-token')
+
+        let userData = db.collection('users').doc(`/${loginToken}`);
+        userData.get().then(doc => {
+            let data = doc.data()
+            if(data == undefined){
+                userData.set({
+                    [Date.now()]: {
+                        username: usernameInput.value,
+                        admin: false,
+                        currentRoom: "Global"
+                    }
+                })
+                localStorage.setItem('chat-app-user-token', loginToken)
+            } else {
+                userData.set({
+                    [Date.now()]: {
+                        username: usernameInput.value,
+                        admin: false,
+                        currentRoom: "Global"
+                    }
+                }, {merge: true})
+            }
+        })
+        setTimeout(() => {window.location.href = "./app.html"}, 1000)
+    }  
+</script>

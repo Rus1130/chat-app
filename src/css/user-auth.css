@@ -31,7 +31,7 @@ textarea:focus {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 300px;
+    height: 210px;
     width: 500px;
     display: grid;
     grid-template-columns: 1fr;
@@ -48,15 +48,15 @@ textarea:focus {
 .content-data {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 55px 55px 55px;
-    height: 185px;
+    grid-template-rows: 55px 55px;
+    height: 120px;
     row-gap: 10px;
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 20px;
 }
 
-#username-input, #password-input {
+#username-input {
     height: 55px;
 }
 
