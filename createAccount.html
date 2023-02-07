@@ -7,22 +7,22 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="container">
-            <div class="container-head">
+        <div class="content">
+            <div class="content-header">
                 Welcome!
             </div>
-            <div class="account-data-input">  
+            <div class="content-data">  
                 <textarea id="username-input" placeholder="Username"></textarea>
                 <textarea id="password-input" placeholder="Password"></textarea>
                 <div id="button">
-                    Sign Up
+                    Create Account
                 </div>
             </div>
         </div>
     </div>
 </body>
 <script>
-    if(localStorage.getItem('chat-app-has-account') == "true") window.location.href = "./login.html";
+    if(localStorage.getItem('chat-app-has-account') == "true") window.location.href = "./app.html";
     const button = document.getElementById('button')
     const usernameInput = document.getElementById('username-input')
     const passwordInput = document.getElementById('password-input')
@@ -35,6 +35,7 @@
         passwordInput.value = passwordInput.value.trim()
         
         if(usernameInput.value == "" || passwordInput.value == "") return alert("Please fill in all fields.")
+        if(usernameInput.value.split("").includes(" ")) return alert("Username cannot contain spaces.")
 
         let userData = db.collection('users').doc(`/${usernameInput.value}`);
         userData.get().then(doc => {

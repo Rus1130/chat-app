@@ -27,7 +27,7 @@ textarea:focus {
     width: 100%;
 }
 
-.container {
+.content {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -38,20 +38,27 @@ textarea:focus {
     grid-template-rows: 2fr 4fr;
 }
 
-.container-head {
+.content-header {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 40px;
 }
 
-.account-data-input {
+.content-data {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 50px 50px 50px;
+    grid-template-rows: 55px 55px 55px;
+    height: 185px;
     row-gap: 10px;
     margin-left: 20px;
     margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+
+#username-input, #password-input {
+    height: 55px;
 }
 
 #button {
